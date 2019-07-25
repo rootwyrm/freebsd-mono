@@ -1,0 +1,26 @@
+diff --git a/mono/metadata/mono-route.h b/mono/metadata/mono-route.h
+index 43598233865a..514b080ad4f3 100644
+--- mono/metadata/mono-route.h.orig
++++ mono/metadata/mono-route.h
+@@ -7,6 +7,7 @@
+ 
+ #if defined(HOST_DARWIN) || defined(HOST_BSD)
+ 
++#include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>		/* in_addr_t */
+ 
+diff --git a/mono/utils/mono-state.c b/mono/utils/mono-state.c
+index a0e55a4fab28..de999a9598f5 100644
+--- mono/utils/mono-state.c.orig
++++ mono/utils/mono-state.c
+@@ -18,6 +18,9 @@
+ 
+ #include <sys/param.h>
+ #include <fcntl.h>
++#ifdef HAVE_SYS_STAT_H
++#include <sys/stat.h>
++#endif
+ #include <utils/mono-threads-debug.h>
+ 
+ extern GCStats mono_gc_stats;

@@ -1,0 +1,93 @@
+diff --git a/configure.ac b/configure.ac
+index 328fdb8f7be7..0c22122a3897 100644
+--- configure.ac.orig
++++ configure.ac
+@@ -6140,6 +6140,22 @@ elif case $host_os in aix*|os400*) true;; *) false;; esac; then
+ 	AC_MSG_RESULT(aix)
+ 
+ 	MONO_NATIVE_PLATFORM_TYPE="MONO_NATIVE_PLATFORM_TYPE_AIX"
++elif case $host_os in freebsd*) true;; *) false;; esac; then
++	mono_native_text="FreeBSD"
++	MONO_NATIVE_CC=$CC
++	MONO_NATIVE_CXX=$CXX
++	MONO_NATIVE_CPPFLAGS=$CPPFLAGS
++	MONO_NATIVE_CXXFLAGS=$CXXFLAGS
++	MONO_NATIVE_CFLAGS=$CFLAGS
++	MONO_NATIVE_LDFLAGS=$LDFLAGS
++
++	mono_native=yes
++	mono_native_compat=no
++	MONO_NATIVE_PLATFORM=freebsd
++	AC_MSG_CHECKING([Mono.Native support])
++	AC_MSG_RESULT(freebsd)
++
++	MONO_NATIVE_PLATFORM_TYPE="MONO_NATIVE_PLATFORM_TYPE_FREEBSD"
+ elif test x$platform_android = xyes; then
+ 	mono_native_text="Android"
+ 	MONO_NATIVE_CC=$CC
+@@ -6194,6 +6210,7 @@ AM_CONDITIONAL(MONO_NATIVE_PLATFORM_IOS, test x$MONO_NATIVE_PLATFORM = xios)
+ AM_CONDITIONAL(MONO_NATIVE_PLATFORM_LINUX, test x$MONO_NATIVE_PLATFORM = xlinux)
+ AM_CONDITIONAL(MONO_NATIVE_PLATFORM_AIX, test x$MONO_NATIVE_PLATFORM = xaix)
+ AM_CONDITIONAL(MONO_NATIVE_PLATFORM_ANDROID, test x$MONO_NATIVE_PLATFORM = xandroid)
++AM_CONDITIONAL(MONO_NATIVE_PLATFORM_FREEBSD, test x$MONO_NATIVE_PLATFORM = xfreebsd)
+ 
+ MONO_NATIVE_PLATFORM_TYPE_COMPAT="$MONO_NATIVE_PLATFORM_TYPE | MONO_NATIVE_PLATFORM_TYPE_COMPAT"
+ MONO_NATIVE_PLATFORM_TYPE_UNIFIED="$MONO_NATIVE_PLATFORM_TYPE | MONO_NATIVE_PLATFORM_TYPE_UNIFIED"
+diff --git a/mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs b/mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs
+index 6e16d9dda502..45f624b3d9c7 100644
+--- mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs.orig
++++ mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs
+@@ -36,6 +36,8 @@ enum MonoNativePlatformType
+ 		MONO_NATIVE_PLATFORM_TYPE_IOS		= 2,
+ 		MONO_NATIVE_PLATFORM_TYPE_LINUX		= 3,
+ 		MONO_NATIVE_PLATFORM_TYPE_AIX		= 4,
++		MONO_NATIVE_PLATFORM_TYPE_ANDROID	= 5,
++		MONO_NATIVE_PLATFORM_TYPE_FREEBSD	= 6,
+ 
+ 		MONO_NATIVE_PLATFORM_TYPE_IPHONE	= 0x100,
+ 		MONO_NATIVE_PLATFORM_TYPE_TV		= 0x200,
+diff --git a/mono/native/Makefile.am b/mono/native/Makefile.am
+index 4f3c9003dddb..71dad6f7e362 100644
+--- mono/native/Makefile.am.orig
++++ mono/native/Makefile.am
+@@ -71,6 +71,8 @@ linux_sources = $(unix_sources)
+ 
+ aix_sources = $(unix_sources)
+ 
++freebsd_sources = $(unix_sources)
++
+ android_sources = \
+ 	pal-android.h \
+ 	pal-android.c \
+@@ -108,7 +110,7 @@ macos_sources += $(gss_sources)
+ ios_sources += $(gss_sources)
+ endif
+ 
+-EXTRA_libmono_native_la_SOURCES = $(common_sources) $(macos_sources) $(ios_sources) $(linux_sources) $(aix_sources) $(unix_sources) $(gss_sources)
++EXTRA_libmono_native_la_SOURCES = $(common_sources) $(macos_sources) $(ios_sources) $(linux_sources) $(aix_sources) $(freebsd) $(unix_sources) $(gss_sources)
+ 
+ if MONO_NATIVE_PLATFORM_MACOS
+ platform_sources = $(macos_sources)
+@@ -124,6 +126,10 @@ platform_sources = $(aix_sources)
+ else
+ if MONO_NATIVE_PLATFORM_ANDROID
+ platform_sources = $(android_sources)
++else
++if MONO_NATIVE_PLATFORM_FREEBSD
++platform_sources = $(freebsd_sources)
++endif
+ endif
+ endif
+ endif
+diff --git a/mono/native/mono-native-platform.h b/mono/native/mono-native-platform.h
+index 64d31800bbde..970f4d96ece2 100644
+--- mono/native/mono-native-platform.h.orig
++++ mono/native/mono-native-platform.h
+@@ -11,6 +11,7 @@ typedef enum {
+ 	MONO_NATIVE_PLATFORM_TYPE_LINUX		= 3,
+ 	MONO_NATIVE_PLATFORM_TYPE_AIX		= 4,
+ 	MONO_NATIVE_PLATFORM_TYPE_ANDROID	= 5,
++	MONO_NATIVE_PLATFORM_TYPE_FREEBSD	= 6,
+ 
+ 	MONO_NATIVE_PLATFORM_TYPE_IPHONE	= 0x100,
+ 	MONO_NATIVE_PLATFORM_TYPE_TV		= 0x200,
