@@ -1,6 +1,6 @@
 PORTNAME=	mono
-## 6.0.0 STABLE
 DISTVERSION=	6.0.0.313
+# Branch 2019-02, MSBuild 16.1, Roslyn 3.1.0 (9d80dea7)
 CATEGORIES=	lang
 MASTER_SITES=	https://download.mono-project.com/sources/mono/
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
