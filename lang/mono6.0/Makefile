@@ -35,7 +35,7 @@ MONOLITE_VERSION=	1051700033
 
 INOTIFY_DESC= Use libinotify to provide inotify support
 INOTIFY_CONFIGURE_OFF=	--disable-inotify
-INOTIFY_LIB_DEPENDS=	libnotify.so:devel/libinotify
+INOTIFY_LIB_DEPENDS=	libinotify.so:devel/libinotify
 
 NINJA_DESC=	Use ninja to build wherever possible (EXPERIMENTAL!)
 NINJA_CONFIGURE_OFF=	--disable-ninja
