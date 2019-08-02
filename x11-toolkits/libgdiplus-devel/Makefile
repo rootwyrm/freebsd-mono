@@ -1,11 +1,11 @@
 PORTNAME=	libgdiplus-devel
 CATEGORIES=	x11-toolkits
-DISTVERSION=	5.6.2
+DISTVERSION=	6.0
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	mono
 GH_PROJECT=	libgdiplus
-GH_TAGNAME=	91f3b96
+GH_TAGNAME=	release/6.0
 
 MAINTAINER=	prj@rootwyrm.com
 COMMENT=	GDI+ API for System.Windows.Forms in Mono
@@ -20,6 +20,7 @@ LIB_DEPENDS=	libtiff.so:graphics/tiff \
 		libfreetype.so:print/freetype2 \
 		libexif.so:graphics/libexif \
 		libfontconfig.so:x11-fonts/fontconfig
+RUN_DEPENDS=	pango>0:x11-toolkits/pango
 
 GNU_CONFIGURE=	yes
 USES=		autoreconf cpe gettext-runtime gmake gnome jpeg libtool:keepla pathfix pkgconfig
