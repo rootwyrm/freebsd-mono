@@ -1,0 +1,10 @@
+--- mcs/build/rules.make.orig   2019-07-31 02:48:23.233419000 +0000
++++ mcs/build/rules.make        2019-07-31 02:48:41.460266000 +0000
+@@ -46,5 +46,5 @@
+ USE_CFLAGS = $(LOCAL_CFLAGS) $(CFLAGS) $(CPPFLAGS)
+ CSCOMPILE = $(Q_MCS) $(MCS) $(USE_MCS_FLAGS)
+-CSC_RUNTIME_FLAGS = --aot-path=$(abspath $(topdir)/class/lib/$(BUILD_TOOLS_PROFILE)) --gc-params=nursery-size=64m
++CSC_RUNTIME_FLAGS = --aot-path=$(abspath $(topdir)/class/lib/$(BUILD_TOOLS_PROFILE)) --gc-params=nursery-size=64m --clr-memory-model
+ BASCOMPILE = $(MBAS) $(USE_MBAS_FLAGS)
+ CCOMPILE = $(CC) $(USE_CFLAGS)
+
