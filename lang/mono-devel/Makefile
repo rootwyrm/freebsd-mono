@@ -7,28 +7,31 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	mono
 GH_PROJECT=	mono
 GH_TAGNAME=	5dc37d7
-GH_TUPLE=	mono:Newtonsoft.Json:471c3e0:external/Newtonsoft.Json \
-	mono:api-doc-tools:preview-5.0.0.6-21-gd03e819:external/api-doc-tools \
-	mono:api-snapshot:28083e6:external/api-snapshot \
-	mono:aspnetwebstack:e77b12e:external/aspnetwebstack \
-	mono:binary-reference-assemblies:e5173a5:external/reference-assemblies \
-	mono:bockbuild:ebd7067:external/bockbuild \
-	mono:boringssl:mono:external/boringssl \
-	mono:cecil:0.9.5-885-ga6c8f5e:external/cecil \
-	mono:cecil-legacy:0.9.5-131-g33d50b8:external/cecil-legacy \
-	mono:corefx:e4f7102:external/corefx \
-	mono:corert:v0.0.1-6924-gffcd7990d:external/corert \
-	mono:helix-binaries:64b3a67:external/helix-binaries \
-	mono:ikdasm:f0fd66e:external/ikdasm \
-	mono:ikvm:847e05fc:external/ikvm \
-	mono:illinker-test-assets:ec9eb51:external/illinker-test-assets \
-	mono:linker:gebe2a1:external/linker \
-	mono:llvm:29f36fd:external/llvm \
-	mono:nuget-buildtasks:9955847:external/nuget-buildtasks \
-	mono:nunit-lite:5406f2a:external/nunit-lite \
-	mono:roslyn-binaries:38979ff:external/roslyn-binaries \
-	mono:rx:remotes/origin/rx-oss-v2.2:external/rx \
-	mono:xunit-binaries:8f6e62e:external/xunit-binaries
+MASTER_SITES=	GH
+## Account Tree Hash GROUP/path
+GH_TUPLE=	mono:Newtonsoft.Json:471c3e0:Newtonsoft_Json/external/Newtonsoft.Json \
+	mono:api-snapshot:28083e6:api_snapshot/external/api-snapshot \
+	mono:aspnetwebstack:e77b12e:aspnetwebstack/external/aspnetwebstack \
+	mono:reference-assemblies:e5173a55:reference_assemblies/external/reference-assemblies \
+	mono:bockbuild:ebd7067:bockbuild/external/bockbuild \
+	mono:boringssl:mono:boringssl/external/boringssl \
+	mono:cecil:0.9.5-885-ga6c8f5e:cecil/external/cecil \
+	mono:cecil:mono-legacy-0.9.5:cecil_legacy/external/cecil-legacy \
+	mono:corefx:e4f7102:corefx/external/corefx \
+	mono:corert:v0.0.1-6924-gffcd7990d:corert/external/corert \
+	mono:helix-binaries:64b3a67:helix_binaries/external/helix-binaries \
+	mono:ikdasm:f0fd66e:ikdasm/external/ikdasm \
+	mono:ikvm-fork:847e05fc:ikvm/external/ikvm \
+	mono:illinker-test-assets:ec9eb51:illinker_test_assets/external/illinker-test-assets \
+	mono:linker:remotes/origin/release/3.0-17-gebe2a1f:linker/external/linker \
+	mono:llvm:29f36fd:llvm/external/llvm \
+	mono:NuGet.BuildTasks:9955847:nuget_buildtasks/external/nuget-buildtasks \
+	mono:NUnitLite:5406f2a:nunit_lite/external/nunit-lite \
+	mono:roslyn-binaries:38979ff:roslyn_binaries/external/roslyn-binaries \
+	mono:rx:rx-oss-v2.2:rx/external/rx \
+	mono:xunit-binaries:8f6e62e:xunit_binaries/external/xunit-binaries
+	
+	#mono:api-doc-tools:preview-5.0.0.6-21-gd03e819:api-doc-tools/external/api-doc-tools \
 	
 #mono:nuget-buildtasks:heads/dev:external/nuget-buildtasks \
 #mono:linker:remotes/origin/release/3.0-17-gebe2a1f:external/linker \
