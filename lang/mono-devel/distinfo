@@ -1,4 +1,4 @@
-TIMESTAMP = 1564762924
+TIMESTAMP = 1564763462
 SHA256 (monolite-linux-1051700033-latest.tar.gz) = 35f90b2df9b67a10fbae44f6e6fceeaca94cab7542cca4aa692a35114fa9c965
 SIZE (monolite-linux-1051700033-latest.tar.gz) = 5222221
 SHA256 (mono-mono-6.4-5dc37d7_GH0.tar.gz) = 6ae4fa0ac07fdf466e91d2eff649d97112dd9fe298d8f54ba2a4649f829e0038
@@ -31,8 +31,8 @@ SHA256 (mono-ikvm-fork-847e05fc_GH0.tar.gz) = 4bb482b1f14d803bb78b324bdde024a07d
 SIZE (mono-ikvm-fork-847e05fc_GH0.tar.gz) = 250853
 SHA256 (mono-illinker-test-assets-ec9eb51_GH0.tar.gz) = d141d7be321a4a18030498ad7c3f1df65bda4c6572d62e544352802a3a84f392
 SIZE (mono-illinker-test-assets-ec9eb51_GH0.tar.gz) = 30974991
-SHA256 (mono-linker-remotes-origin/release/3.0-17-gebe2a1f_GH0.tar.gz) = ebb8568552f4a2ccaa67efe1622991cbe5a2aef507f98b105940bcfae236ab02
-SIZE (mono-linker-remotes-origin/release/3.0-17-gebe2a1f_GH0.tar.gz) = 329604
+SHA256 (mono-linker-3.0-17-gebe2a1f_GH0.tar.gz) = 9435bacee9b2b41443e7f26c60c42183f26cd80557f3b0edce338c76823ee99d
+SIZE (mono-linker-3.0-17-gebe2a1f_GH0.tar.gz) = 330413
 SHA256 (mono-llvm-29f36fd_GH0.tar.gz) = 4dc347d572ec67a09129fd3d450b40f452202d2732cd9f6e6be40aa092231ad4
 SIZE (mono-llvm-29f36fd_GH0.tar.gz) = 37907495
 SHA256 (mono-NuGet.BuildTasks-9955847_GH0.tar.gz) = 49a8f65edb2246b41a030dfbfd355256320372020c2e7bfcdecc5b60bedc72c9

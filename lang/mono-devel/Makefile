@@ -23,7 +23,7 @@ GH_TUPLE=	mono:Newtonsoft.Json:471c3e0:Newtonsoft_Json/external/Newtonsoft.Json 
 	mono:ikdasm:f0fd66e:ikdasm/external/ikdasm \
 	mono:ikvm-fork:847e05fc:ikvm/external/ikvm \
 	mono:illinker-test-assets:ec9eb51:illinker_test_assets/external/illinker-test-assets \
-	mono:linker:remotes/origin/release/3.0-17-gebe2a1f:linker/external/linker \
+	mono:linker:3.0-17-gebe2a1f:linker/external/linker \
 	mono:llvm:29f36fd:llvm/external/llvm \
 	mono:NuGet.BuildTasks:9955847:nuget_buildtasks/external/nuget-buildtasks \
 	mono:NUnitLite:5406f2a:nunit_lite/external/nunit-lite \
