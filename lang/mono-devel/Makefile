@@ -12,7 +12,7 @@ MASTER_SITES=	GH
 GH_TUPLE=	mono:Newtonsoft.Json:471c3e0:Newtonsoft_Json/external/Newtonsoft.Json \
 	mono:api-snapshot:28083e6:api_snapshot/external/api-snapshot \
 	mono:aspnetwebstack:e77b12e:aspnetwebstack/external/aspnetwebstack \
-	mono:reference-assemblies:e5173a55:reference_assemblies/external/reference-assemblies \
+	mono:reference-assemblies:e5173a55:reference_assemblies/external/binary-reference-assemblies \
 	mono:bockbuild:ebd7067:bockbuild/external/bockbuild \
 	mono:boringssl:mono:boringssl/external/boringssl \
 	mono:cecil:0.9.5-885-ga6c8f5e:cecil/external/cecil \

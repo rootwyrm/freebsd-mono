@@ -1,6 +1,13 @@
-NOTICE: Mono 6.0.0 is currently a PREVIEW RELEASE
-Users should carefully read the current release notes before migrating 
-applications to 6.0.0!
+**********************************************************************
+DANGER DANGER DANGER DANGER DANGER DANGER DANGER DANGER DANGER DANGER 
+**********************************************************************
 
-https://www.mono-project.com/docs/about-mono/releases/6.0.0/
+mono-devel tracks mono6.4+ from GitHub. 
+This tree moves fast and breaks often. This port exists mostly to 
+perform unit testing and validation. Or more accurately, to figure 
+out why a commit broke FreeBSD.
 
+YOU SHOULD NOT EXPECT YOUR MONO APPLICATIONS TO BE STABLE OR EVEN TO 
+RUN CORRECTLY USING THIS PORT!
+
+**********************************************************************

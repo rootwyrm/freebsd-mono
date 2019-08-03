@@ -1,0 +1,42 @@
+--- acceptance-tests/Makefile.orig      2019-08-02 13:52:07.542206000 +0000
++++ acceptance-tests/Makefile   2019-08-02 13:53:16.112685000 +0000
+@@ -5735,11 +5735,11 @@
+
+ define ValidateVersionTemplate
+ #$(eval REPOSITORY_$(2):=$(shell test -z $(3) && echo $(1) || echo "$(3)"))
+-#$(eval DIRECTORY_$(2):=$(shell python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-dir $(1)))
++#$(eval DIRECTORY_$(2):=$(shell python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-dir $(1)))
+ #$(eval DIRECTORY_$(2):=$(shell test -z $(DIRECTORY_$(2)) && echo $(1) || echo $(DIRECTORY_$(2))))
+-#$(eval MODULE_$(2):=$(shell python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-url $(1)))
+-#$(eval NEEDED_$(2)_VERSION:=$(shell python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-rev $(1)))
+-#$(eval $(2)_BRANCH_AND_REMOTE:=$(shell python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-remote-branch $(1)))
++#$(eval MODULE_$(2):=$(shell python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-url $(1)))
++#$(eval NEEDED_$(2)_VERSION:=$(shell python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-rev $(1)))
++#$(eval $(2)_BRANCH_AND_REMOTE:=$(shell python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) get-remote-branch $(1)))
+
+ #$(eval $(2)_VERSION:=$$$$(shell cd $($(2)_PATH) 2>/dev/null && git rev-parse HEAD ))
+
+@@ -5831,19 +5831,19 @@
+
+ __bump-version-%:
+        @if [ "$(REV)" = "" ]; then echo "Usage: make bump-version-$* REV=<ref>"; exit 1; fi
+-       python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-rev $* $(REV)
++       python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-rev $* $(REV)
+        @if [ "$(COMMIT)" = "1" ]; then echo "[submodules] Bump $* to pick up $(REV)." | git commit -F - $(SUBMODULES_CONFIG_FILE); fi
+
+ __bump-branch-%:
+        @if [ "$(BRANCH)" = "" ]; then echo "Usage: make bump-branch-$* BRANCH=<branch> REMOTE_BRANCH=<remote branch>"; exit 1; fi
+        @if [ "$(REMOTE_BRANCH)" == "" ]; then echo "Usage: make bump-branch-$* BRANCH=<branch> REMOTE_BRANCH=<remote branch>"; exit 1; fi
+-       python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-branch $* $(BRANCH)
+-       python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-remote-branch $* $(REMOTE_BRANCH)
++       python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-branch $* $(BRANCH)
++       python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-remote-branch $* $(REMOTE_BRANCH)
+        @if [ "$(COMMIT)" = "1" ]; then echo "[submodules] Bump $* to switch to $(BRANCH) $(REMOTE BRANCH)." | git commit -F - $(SUBMODULES_CONFIG_FILE); fi
+
+ __bump-current-version-%:
+        REV=$(shell cd $(ACCEPTANCE_TESTS_PATH)/$* && git log -1 --pretty=format:%H); \
+-       python $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-rev $* $$REV; \
++       python3.6 $(SCRIPT) $(SUBMODULES_CONFIG_FILE) set-rev $* $$REV; \
+        if [ "$(COMMIT)" = "1" ]; then echo "[submodules] Bump $* to pick up $$REV:" | git commit -F - $(SUBMODULES_CONFIG_FILE); fi
+
+ $(eval $(call ValidateVersionTemplate,benchmarker,BENCHMARKER))

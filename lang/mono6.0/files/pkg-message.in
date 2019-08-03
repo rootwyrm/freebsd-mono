@@ -1,8 +1,5 @@
-Mono 6.0 is a major release. Users and developers should carefully review the 
-release notes prior to migrating applications.
-
-NOTE: this port utilizes the Mono built-in cryptographic library and support
-      for BoringTLS is disabled.
+Users should carefully read the current release notes before migrating 
+applications to 6.0.0!
 
 https://www.mono-project.com/docs/about-mono/releases/6.0.0/
 

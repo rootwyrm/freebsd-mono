@@ -1,0 +1,16 @@
+diff --git a/src/Native/Unix/System.Native/pal_io.c b/src/Native/Unix/System.Native/pal_io.c
+index 0032e3f5461c..c0318d96f790 100644
+--- external/corefx/src/Native/Unix/System.Native/pal_io.c
++++ external/corefx/src/Native/Unix/System.Native/pal_io.c
+@@ -33,7 +33,10 @@
+ #elif HAVE_SENDFILE_4
+ #include <sys/sendfile.h>
+ #endif
+-#if HAVE_INOTIFY
++#if defined(__FreeBSD__) & defined(HAVE_INOTIFY)
++// FreeBSD requires a fully explicit path when using libinotify shim
++#include </usr/local/include/sys/inotify.h>
++#elif HAVE_INOTIFY
+ #include <sys/inotify.h>
+ #endif
+ 
