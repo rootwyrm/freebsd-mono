@@ -63,9 +63,9 @@ USE_LDCONFIG=	yes
 SHEBANG_FILES=	scripts/mono-package-runtime scripts/mono-heapviz mono/mini/genmdesc.py mono/tests/test_lldb.py mono/tests/gc-descriptors/gen-descriptor-tests.py
 BINARY_ALIAS=	python=${PYTHON_CMD}
 
-CONFIGURE_ARGS_aarch64=--with-csc=mcs
-CONFIGURE_ARGS_powerpc64=--with-csc=mcs
-CONFIGURE_ARGS+=	${CONFIGURE_ARGS_${ARCH}} --disable-dtrace --disable-boehm --disable-btls
+CONFIGURE_ARGS_aarch64=--with-csc=mcs --disable-btls
+CONFIGURE_ARGS_powerpc64=--with-csc=mcs --disable-btls
+CONFIGURE_ARGS+=	${CONFIGURE_ARGS_${ARCH}} --disable-dtrace --disable-boehm 
 CONFIGURE_ENV=	ac_cv_header_sys_inotify_h=no
 
 MAKE_ENV=	MONO_SHARED_DIR="${WRKDIR}" \
