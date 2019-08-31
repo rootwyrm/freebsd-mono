@@ -1,5 +1,5 @@
 PORTNAME=	mono
-DISTVERSION=	6.0.0.319
+DISTVERSION=	6.0.0.327
 # Branch 2019-02, MSBuild 16.1, Roslyn 3.1.0 (9d80dea7)
 CATEGORIES=	lang
 MASTER_SITES=	https://download.mono-project.com/sources/mono/
