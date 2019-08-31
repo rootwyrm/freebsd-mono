@@ -1,5 +1,5 @@
 PORTNAME=	mono
-DISTVERSION=	6.0.0.313
+DISTVERSION=	6.0.0.319
 # Branch 2019-02, MSBuild 16.1, Roslyn 3.1.0 (9d80dea7)
 CATEGORIES=	lang
 MASTER_SITES=	https://download.mono-project.com/sources/mono/
@@ -13,9 +13,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 ONLY_FOR_ARCHS=		amd64 armv6 armv7 i386 powerpc64 aarch64
 
+## XXX: Testing with llvm80... this can only go well. /s
 BUILD_DEPENDS=	p5-XML-Parser>=0:textproc/p5-XML-Parser \
 		bash:shells/bash \
-		cmake>0:devel/cmake 
+		cmake>0:devel/cmake \
+		llvm-config80:devel/llvm80
 LIB_DEPENDS=	libiconv.so:converters/libiconv
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow@${PY_FLAVOR} \
 		ca_root_nss>=0:security/ca_root_nss \
@@ -31,7 +33,9 @@ MONOLITE_DESC=		Use monolite to bootstrap mcs (otherwise use installed mcs)
 MONOLITE_DISTFILES=	monolite-linux-${MONOLITE_VERSION}-latest.tar.gz:monolite
 MONOLITE_MASTER_SITES=	http://download.mono-project.com/monolite/:monolite
 ## 2018-07-22	1051700033
-MONOLITE_VERSION=	1051700033
+#MONOLITE_VERSION=	1051700033
+## 2019-06-25	a3d6fce2-2790-4089-9543-34eb239e2b04
+MONOLITE_VERSION=	a3d6fce2-2790-4089-9543-34eb239e2b04
 
 INOTIFY_DESC= Use libinotify to provide inotify support
 INOTIFY_CONFIGURE_OFF=	--disable-inotify
@@ -65,7 +69,7 @@ BINARY_ALIAS=	python=${PYTHON_CMD}
 
 CONFIGURE_ARGS_aarch64=--with-csc=mcs --disable-btls
 CONFIGURE_ARGS_powerpc64=--with-csc=mcs --disable-btls
-CONFIGURE_ARGS+=	${CONFIGURE_ARGS_${ARCH}} --disable-dtrace --disable-boehm 
+CONFIGURE_ARGS+=	${CONFIGURE_ARGS_${ARCH}} CC=/usr/local/bin/clang80 CXX=/usr/local/bin/clang++80 --disable-dtrace --disable-boehm 
 CONFIGURE_ENV=	ac_cv_header_sys_inotify_h=no
 
 MAKE_ENV=	MONO_SHARED_DIR="${WRKDIR}" \
