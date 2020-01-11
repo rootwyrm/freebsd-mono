@@ -1,6 +1,9 @@
 # freebsd-mono
 This repository contains my working versions of the mono ports for FreeBSD, in portshaker and CI friendly layout.
 
+You can check the official Mono project CI status here:
+https://jenkins.mono-project.com/job/test-mono-mainline-community/label=freebsd-12-amd64/
+
 Most are fully tested including full Mono test suite. Some are... not. 
 
 # Versions Covered
