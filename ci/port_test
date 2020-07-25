@@ -2,12 +2,12 @@
 ## Test the specified port
 
 echo "Entering port_test"
-if [ -z $1 ]; then
-	echo "Port name to test not provided."
-	exit 1
+if [ -z $PORT ]; then
+	PORT=lang/mono
 else
-	echo "Building $1"
+	PORT=$PORT
 fi
+echo "Building $PORT"
 
 #cd /usr/ports
 #echo "Performing make describe test."

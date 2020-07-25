@@ -13,9 +13,16 @@
 #fi
 ## XXX: it's portsnap, sigh.
 env PAGER=cat portsnap fetch --interactive
-portsnap update
-cp -r ${CIRRUS_WORKING_DIR}/lang/* /usr/ports/lang/
-cp -r ${CIRRUS_WORKING_DIR}/x11-toolkits/* /usr/ports/x11-toolkits/
+portsnap extract > /dev/null
+if [ $? -eq 0 ]; then
+	echo "portsnap extracted successfully."
+else
+	RC=$?
+	echo "portsnap failed"
+	exit $RC
+fi
+#cp -r ${CIRRUS_WORKING_DIR}/lang/* /usr/ports/lang/
+#cp -r ${CIRRUS_WORKING_DIR}/x11-toolkits/* /usr/ports/x11-toolkits/
 
 ## Setup system make.conf
 if [ -f /etc/make.conf ]; then

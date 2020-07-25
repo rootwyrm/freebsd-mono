@@ -8,7 +8,8 @@ task:
     # Instructions:
     pkg_preload_script: ci/pkg_preload
     port_setup_script: ci/ports_setup
-    port_test_script: ci/port_test lang/mono5.20
+    ## Can't pass a script an argument, that's stupid.
+    port_test_script: ci/port_test
 task:
     # Basic metadata:
     name: lang/mono 12.1
@@ -18,7 +19,8 @@ task:
     # Instructions:
     pkg_preload_script: ci/pkg_preload
     port_setup_script: ci/ports_setup
-    port_test_script: ci/port_test lang/mono5.20
+    ## Can't pass a script an argument, that's stupid.
+    port_test_script: ci/port_test
 task:
     # Basic metadata:
     name: lang/mono HEAD
@@ -28,6 +30,6 @@ task:
     # Instructions:
     pkg_preload_script: ci/pkg_preload
     port_setup_script: ci/ports_setup
-    port_test_script: ci/port_test lang/mono5.20
-
+    ## Can't pass a script an argument, that's stupid.
+    port_test_script: ci/port_test
 
