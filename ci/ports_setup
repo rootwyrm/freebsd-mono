@@ -5,7 +5,8 @@
 #	rm -rf /usr/ports
 #fi
 echo "Checking out ports from svn..."
-svnlite update https://svn.freebsd.org/ports/head /usr/ports > /dev/null
+#svnlite update https://svn.freebsd.org/ports/head /usr/ports > /dev/null
+svnlite update /usr/ports 
 if [ $? -ne 0 ]; then
 	echo "Failed to check out ports from SVN."
 	exit 1
