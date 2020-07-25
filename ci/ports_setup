@@ -1,11 +1,11 @@
 #!/bin/sh
 ## Pull ports via svn instead of portsnap
-if [ -d /usr/ports ]; then
-	echo "Removing existing ports tree."
-	rm -rf /usr/ports
-fi
+#if [ -d /usr/ports ]; then
+#	echo "Removing existing ports tree."
+#	rm -rf /usr/ports
+#fi
 echo "Checking out ports from svn..."
-svnlite co https://svn.freebsd.org/ports/head /usr/ports > /dev/null
+svnlite update https://svn.freebsd.org/ports/head /usr/ports > /dev/null
 if [ $? -ne 0 ]; then
 	echo "Failed to check out ports from SVN."
 	exit 1

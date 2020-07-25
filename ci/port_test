@@ -4,19 +4,21 @@
 if [ -z $1 ]; then
 	echo "Port name to test not provided."
 	exit 1
+else
+	echo "Building $1"
 fi
 
 #cd /usr/ports
 #echo "Performing make describe test."
 #make describe
 #cd $1
-make -C /usr/ports/$1 distclean
-make -C /usr/ports/$1 clean
+make -C $1 distclean
+make -C $1 clean
 echo "Checking stage..."
-make -C /usr/ports/$1 stage
+make -C $1 stage
 echo "Checking plist..."
-make -C /usr/ports/$1 check-plist
+make -C $1 check-plist
 echo "Checking stage-qa..."
-make -C /usr/ports/$1 stage-qa
+make -C $1 stage-qa
 echo "Making package..."
-make -C /usr/ports/$1 package
+make -C $1 package
