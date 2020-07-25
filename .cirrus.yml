@@ -1,0 +1,13 @@
+## Our testing here is rather complex, because we aren't slackers.
+task:
+  name: Test lang/mono
+    matrix:
+      freebsd_instance:
+        matrix:
+          - image_family: freebsd-11-3
+          - image_family: freebsd-12-1
+          - image_family: freebsd-13-0-snap
+    pkg_preload_script: ci/pkg_preload
+    port_setup_script: ci/ports_setup
+    build_test_script: ci/port_test lang/mono5.20
+
