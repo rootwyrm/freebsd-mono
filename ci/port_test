@@ -1,6 +1,7 @@
 #!/bin/sh
 ## Test the specified port
 
+echo "Entering port_test"
 if [ -z $1 ]; then
 	echo "Port name to test not provided."
 	exit 1

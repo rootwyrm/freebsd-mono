@@ -12,7 +12,7 @@
 #	exit 1
 #fi
 ## XXX: it's portsnap, sigh.
-portsnap fetch
+env PAGER=cat portsnap fetch --interactive
 portsnap update
 cp -r ${CIRRUS_WORKING_DIR}/lang/* /usr/ports/lang/
 cp -r ${CIRRUS_WORKING_DIR}/x11-toolkits/* /usr/ports/x11-toolkits/
