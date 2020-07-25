@@ -1,6 +1,15 @@
 #!/bin/sh
-## Perform setup of ports
-portsnap fetch && portsnap extract
+## Pull ports via svn instead of portsnap
+if [ -d /usr/ports ]; then
+	echo "Removing existing ports tree."
+	rm -rf /usr/ports
+fi
+echo "Checking out ports from svn..."
+svnlite co https://svn.freebsd.org/ports/head /usr/ports > /dev/null
+if [ $? -ne 0 ]; then
+	echo "Failed to check out ports from SVN."
+	exit 1
+fi
 cp -r ${CIRRUS_WORKING_DIR}/lang/* /usr/ports/lang/
 cp -r ${CIRRUS_WORKING_DIR}/x11-toolkits/* /usr/ports/x11-toolkits/
 

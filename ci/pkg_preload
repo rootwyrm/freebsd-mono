@@ -6,7 +6,6 @@ case $(/bin/freebsd-version -u) in
 		pkg install -y sqlite3 libinotify libiconv gettext-runtime pango cairo ca_root_nss zip automake autoconf bison gmake libtool perl5 python37
 		;;
 	13*)
-		echo "Not ready yet."
-		exit 1
+		pkg install -y sqlite3 libinotify libiconv gettext-runtime pango cairo ca_root_nss zip automake autoconf bison gmake libtool perl5 python37
 		;;
 esac
