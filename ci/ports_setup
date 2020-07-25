@@ -4,13 +4,16 @@
 #	echo "Removing existing ports tree."
 #	rm -rf /usr/ports
 #fi
-echo "Checking out ports from svn..."
+#echo "Checking out ports from svn..."
 #svnlite update https://svn.freebsd.org/ports/head /usr/ports > /dev/null
-svnlite update /usr/ports 
-if [ $? -ne 0 ]; then
-	echo "Failed to check out ports from SVN."
-	exit 1
-fi
+#svnlite update /usr/ports 
+#if [ $? -ne 0 ]; then
+#	echo "Failed to check out ports from SVN."
+#	exit 1
+#fi
+## XXX: it's portsnap, sigh.
+portsnap fetch
+portsnap update
 cp -r ${CIRRUS_WORKING_DIR}/lang/* /usr/ports/lang/
 cp -r ${CIRRUS_WORKING_DIR}/x11-toolkits/* /usr/ports/x11-toolkits/
 
