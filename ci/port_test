@@ -13,13 +13,13 @@ echo "Building $PORT"
 #echo "Performing make describe test."
 #make describe
 #cd $1
-make -C $1 distclean
-make -C $1 clean
+make -C $PORT distclean
+make -C $PORT clean
 echo "Checking stage..."
-make -C $1 stage
+make -C $PORT stage
 echo "Checking plist..."
-make -C $1 check-plist
+make -C $PORT check-plist
 echo "Checking stage-qa..."
-make -C $1 stage-qa
+make -C $PORT stage-qa
 echo "Making package..."
-make -C $1 package
+make -C $PORT package

@@ -13,6 +13,7 @@
 #fi
 ## XXX: it's portsnap, sigh.
 env PAGER=cat portsnap fetch --interactive
+echo "Extracting portsnap..."
 portsnap extract > /dev/null
 if [ $? -eq 0 ]; then
 	echo "portsnap extracted successfully."

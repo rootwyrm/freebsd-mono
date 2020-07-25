@@ -7,7 +7,7 @@ task:
         image_family: freebsd-11-3
     # Instructions:
     pkg_preload_script: ci/pkg_preload
-    port_setup_script: ci/ports_setup
+    #port_setup_script: ci/ports_setup
     ## Can't pass a script an argument, that's stupid.
     port_test_script: ci/port_test
 task:
@@ -18,7 +18,7 @@ task:
         image_family: freebsd-12-1
     # Instructions:
     pkg_preload_script: ci/pkg_preload
-    port_setup_script: ci/ports_setup
+    #port_setup_script: ci/ports_setup
     ## Can't pass a script an argument, that's stupid.
     port_test_script: ci/port_test
 task:
@@ -29,7 +29,7 @@ task:
         image_family: freebsd-13-0-snap
     # Instructions:
     pkg_preload_script: ci/pkg_preload
-    port_setup_script: ci/ports_setup
+    #port_setup_script: ci/ports_setup
     ## Can't pass a script an argument, that's stupid.
     port_test_script: ci/port_test
 
